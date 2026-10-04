@@ -1,0 +1,63 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Jupyter Notebook Checkpoints & Backups
+.ipynb_checkpoints/
+*-checkpoint.ipynb
+*_backup.ipynb
+*.bak
+
+# Datasets and Embeddings
+dataset/
+data/
+*.csv
+*.tsv
+*.gz
+*.zip
+glove.*.txt
+*.vec
+
+# PyTorch Checkpoints and Weights
+*.pt
+*.pth
+*.bin
+
+# macOS / OS Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Workspace scratch & unconsolidated exports
+output_*.png
+Microproyecto-02_consolidado.md
+Sentiment_Analysis.ipynb

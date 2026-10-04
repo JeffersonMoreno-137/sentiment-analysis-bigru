@@ -50,3 +50,48 @@ graph LR
         FC --> Loss["BCEWithLogits / Sigmoid"]
     end
 ```
+
+## Repository Structure
+
+```text
+├── figures/
+│   ├── fig1_curvas.png
+│   ├── fig2a_confusion_base.png
+│   └── fig2b_confusion_glove.png
+├── notebooks/
+│   └── sentiment_analysis_gru.ipynb
+├── .gitignore
+├── LICENSE
+├── README.md
+└── requirements.txt
+```
+
+## Results & Visualizations
+
+### Learning Curves (Loss & Accuracy)
+Comparison between the baseline Bi-GRU (scratch embeddings) and the pre-trained GloVe-initialized Bi-GRU:
+
+![Learning Curves](figures/fig1_curvas.png)
+
+### Confusion Matrices
+Evaluation on the test set (10% stratified holdout split):
+
+| Baseline Bi-GRU | Bi-GRU + GloVe |
+| :---: | :---: |
+| ![Confusion Matrix Base](figures/fig2a_confusion_base.png) | ![Confusion Matrix GloVe](figures/fig2b_confusion_glove.png) |
+
+## Getting Started
+
+### Installation
+Clone the repository and install the dependencies:
+```bash
+git clone https://github.com/JeffersonMoreno-137/sentiment-analysis-bigru.git
+cd sentiment-analysis-bigru
+pip install -r requirements.txt
+```
+
+### Running the Notebook
+Launch Jupyter Lab or your preferred notebook runner:
+```bash
+jupyter lab notebooks/sentiment_analysis_gru.ipynb
+```
