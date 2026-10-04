@@ -12,13 +12,22 @@ End-to-end NLP binary classification pipeline for movie review sentiment analysi
 ## Model Architecture
 
 ```mermaid
-graph TD
-    RawText[Raw Text Review] --> Clean[Regex Cleaning & Lowercasing]
-    Clean --> Tokenizer[Vocab Mapping max_words=10k, pad_len=230]
-    Tokenizer --> Embedding[Embedding Layer: Custom or GloVe 100d]
-    Embedding --> Dropout1[Dropout p=0.3]
-    Dropout1 --> BiGRU[2-Layer Bidirectional GRU hidden_dim=128]
-    BiGRU --> Concat[Concat Forward + Backward Hidden States: 256d]
-    Concat --> Dropout2[Dropout p=0.3]
-    Dropout2 --> Linear[Linear Layer: 256 -> 1]
-    Linear --> BCE[BCEWithLogitsLoss / Sigmoid]
+graph LR
+    subgraph P1["1. Data Pipeline"]
+        Raw["Raw Text Review"] --> Clean["Regex & Lowercasing"]
+        Clean --> Tok["Vocab Mapping (10k, pad=230)"]
+    end
+
+    subgraph P2["2. Recurrent Network"]
+        Tok --> Emb["Embedding (Custom / GloVe 100d)"]
+        Emb --> D1["Dropout (0.3)"]
+        D1 --> GRU["2-Layer Bi-GRU (hidden=128)"]
+    end
+
+    subgraph P3["3. Classification Head"]
+        GRU --> Concat["Concat Hidden (256d)"]
+        Concat --> D2["Dropout (0.3)"]
+        D2 --> FC["Linear (256 → 1)"]
+        FC --> Loss["BCEWithLogits / Sigmoid"]
+    end
+```
